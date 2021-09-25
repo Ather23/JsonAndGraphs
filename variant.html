@@ -1,0 +1,120 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "variants", "label": "variants", "shape": "dot", "size": 10}, {"id": "admin_graphql_api_id", "label": "admin_graphql_api_id", "shape": "dot", "size": 10}, {"id": "option3", "label": "option3", "shape": "dot", "size": 10}, {"id": "grams", "label": "grams", "shape": "dot", "size": 10}, {"id": "inventory_quantity", "label": "inventory_quantity", "shape": "dot", "size": 10}, {"id": "product_id", "label": "product_id", "shape": "dot", "size": 10}, {"id": "image_id", "label": "image_id", "shape": "dot", "size": 10}, {"id": "taxable", "label": "taxable", "shape": "dot", "size": 10}, {"id": "requires_shipping", "label": "requires_shipping", "shape": "dot", "size": 10}, {"id": "compare_at_price", "label": "compare_at_price", "shape": "dot", "size": 10}, {"id": "inventory_management", "label": "inventory_management", "shape": "dot", "size": 10}, {"id": "weight_unit", "label": "weight_unit", "shape": "dot", "size": 10}, {"id": "price", "label": "price", "shape": "dot", "size": 10}, {"id": "old_inventory_quantity", "label": "old_inventory_quantity", "shape": "dot", "size": 10}, {"id": "sku", "label": "sku", "shape": "dot", "size": 10}, {"id": "fulfillment_service", "label": "fulfillment_service", "shape": "dot", "size": 10}, {"id": "created_at", "label": "created_at", "shape": "dot", "size": 10}, {"id": "id", "label": "id", "shape": "dot", "size": 10}, {"id": "updated_at", "label": "updated_at", "shape": "dot", "size": 10}, {"id": "inventory_item_id", "label": "inventory_item_id", "shape": "dot", "size": 10}, {"id": "option1", "label": "option1", "shape": "dot", "size": 10}, {"id": "barcode", "label": "barcode", "shape": "dot", "size": 10}, {"id": "position", "label": "position", "shape": "dot", "size": 10}, {"id": "weight", "label": "weight", "shape": "dot", "size": 10}, {"id": "option2", "label": "option2", "shape": "dot", "size": 10}, {"id": "title", "label": "title", "shape": "dot", "size": 10}, {"id": "presentment_prices", "label": "presentment_prices", "shape": "dot", "size": 10}, {"id": "inventory_policy", "label": "inventory_policy", "shape": "dot", "size": 10}, {"id": "currency_code", "label": "currency_code", "shape": "dot", "size": 10}, {"id": "amount", "label": "amount", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "variants", "to": "admin_graphql_api_id", "weight": 1}, {"arrows": "to", "from": "variants", "to": "option3", "weight": 1}, {"arrows": "to", "from": "variants", "to": "grams", "weight": 1}, {"arrows": "to", "from": "variants", "to": "inventory_quantity", "weight": 1}, {"arrows": "to", "from": "variants", "to": "product_id", "weight": 1}, {"arrows": "to", "from": "variants", "to": "image_id", "weight": 1}, {"arrows": "to", "from": "variants", "to": "taxable", "weight": 1}, {"arrows": "to", "from": "variants", "to": "requires_shipping", "weight": 1}, {"arrows": "to", "from": "variants", "to": "compare_at_price", "weight": 1}, {"arrows": "to", "from": "variants", "to": "inventory_management", "weight": 1}, {"arrows": "to", "from": "variants", "to": "weight_unit", "weight": 1}, {"arrows": "to", "from": "variants", "to": "price", "weight": 1}, {"arrows": "to", "from": "variants", "to": "old_inventory_quantity", "weight": 1}, {"arrows": "to", "from": "variants", "to": "sku", "weight": 1}, {"arrows": "to", "from": "variants", "to": "fulfillment_service", "weight": 1}, {"arrows": "to", "from": "variants", "to": "created_at", "weight": 1}, {"arrows": "to", "from": "variants", "to": "id", "weight": 1}, {"arrows": "to", "from": "variants", "to": "updated_at", "weight": 1}, {"arrows": "to", "from": "variants", "to": "inventory_item_id", "weight": 1}, {"arrows": "to", "from": "variants", "to": "option1", "weight": 1}, {"arrows": "to", "from": "variants", "to": "barcode", "weight": 1}, {"arrows": "to", "from": "variants", "to": "position", "weight": 1}, {"arrows": "to", "from": "variants", "to": "weight", "weight": 1}, {"arrows": "to", "from": "variants", "to": "option2", "weight": 1}, {"arrows": "to", "from": "variants", "to": "title", "weight": 1}, {"arrows": "to", "from": "variants", "to": "presentment_prices", "weight": 1}, {"arrows": "to", "from": "variants", "to": "inventory_policy", "weight": 1}, {"arrows": "to", "from": "presentment_prices", "to": "compare_at_price", "weight": 1}, {"arrows": "to", "from": "presentment_prices", "to": "price", "weight": 1}, {"arrows": "to", "from": "price", "to": "currency_code", "weight": 1}, {"arrows": "to", "from": "price", "to": "amount", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

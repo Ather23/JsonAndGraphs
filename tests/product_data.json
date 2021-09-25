@@ -1,0 +1,41 @@
+{
+    "product": {
+      "id": 1071559574,
+      "title": "Burton Custom Freestyle 151",
+      "variants": [
+        {
+          "id": 1070325019,
+          "product_id": 1071559574,
+          "title": "Default Title",
+          "price": "0.00",
+          "sku": "",
+          "position": 1,
+          "inventory_policy": "deny",
+          "presentment_prices": [
+            {
+              "price": {
+                "amount": "0.00",
+                "currency_code": "USD"
+              },
+              "compare_at_price": null
+            }
+          ],
+          "requires_shipping": true,
+          "admin_graphql_api_id": "gid://shopify/ProductVariant/1070325019"
+        }
+      ],
+      "options": [
+        {
+          "id": 1055547178,
+          "product_id": 1071559574,
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "images": [],
+      "image": "https://"
+    }
+}
